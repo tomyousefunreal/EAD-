@@ -97,8 +97,25 @@ export default function App() {
       upload_btn: "رفع صورة النبات",
       camera_btn: "تصوير بالكاميرا",
       analyze_btn: "بدء التحليل الدقيق",
-      healthy: "النبات سليم",
       disease: "اكتشاف إصابة",
+
+      fin_table_title: "نموذج الأرباح التشغيلية المتوقعة (السنة الأولى)",
+      fin_table_col1: "القطاع / البند",
+      fin_table_col2: "الإيرادات المتوقعة (ج.م)",
+      fin_table_col3: "الملاحظات",
+      fin_row1_col1: "أرباح مبيعات مستلزمات الإنتاج",
+      fin_row1_col3: "كاش وآجل (هامش مرجح 17%)",
+      fin_row2_col1: "هامش ربح المتاجرة في المحاصيل",
+      fin_row2_col3: "ذرة، فول صويا، محاصيل حقلية",
+      fin_row3_col1: "القطاع الصناعي (إنتاج السماد - كمبوست)",
+      fin_row3_col3: "تحويل 1770 طن مخلفات إلى 1062 طن سماد",
+      fin_total_col1: "إجمالي الربح التشغيلي قبل المصروفات",
+      fin_total_col3: "يخصم منها 1.2M للمصروفات، و 1.7M لخدمة الدين",
+
+      address_title: "المقر الرئيسي ومواقع العمل",
+      address_line1: "العياط، محافظة الجيزة",
+      address_line2: "جمهورية مصر العربية",
+      address_desc: "مواقع المشاريع تغطي 350+ فدان تحت إشراف هندسي وزراعي مستمر."
     },
     en: {
       company: "Earth Envelope for Sustainable Agriculture",
@@ -158,6 +175,24 @@ export default function App() {
       analyze_btn: "Run Deep Analysis",
       healthy: "Plant is Healthy",
       disease: "Condition Detected",
+
+      fin_table_title: "Expected Operating Profits Model (First Year)",
+      fin_table_col1: "Sector / Item",
+      fin_table_col2: "Expected Revenues (EGP)",
+      fin_table_col3: "Notes",
+      fin_row1_col1: "Production Supplies Sales Profits",
+      fin_row1_col3: "Cash and Credit (Weighted margin 17%)",
+      fin_row2_col1: "Crop Trading Profit Margin",
+      fin_row2_col3: "Corn, Soybeans, Field Crops",
+      fin_row3_col1: "Industrial Sector (Compost Production)",
+      fin_row3_col3: "Converting 1770 tons of waste to 1062 tons of fertilizer",
+      fin_total_col1: "Total Operating Profit Before Expenses",
+      fin_total_col3: "Deducting 1.2M for expenses, and 1.7M for debt service",
+
+      address_title: "Headquarters & Project Sites",
+      address_line1: "Al Ayat, Giza Governorate",
+      address_line2: "Arab Republic of Egypt",
+      address_desc: "Project sites span 350+ acres under continuous engineering and agricultural supervision."
     }
   }[language];
   
@@ -368,36 +403,36 @@ export default function App() {
 
           <div className="glass-panel p-8 rounded-3xl overflow-x-auto border-emerald-500/20">
              <h3 className="text-xl font-bold text-emerald-300 mb-6 flex items-center gap-3">
-               <Activity className="w-6 h-6"/> نموذج الأرباح التشغيلية المتوقعة (السنة الأولى)
+               <Activity className="w-6 h-6"/> {curr.fin_table_title}
              </h3>
-             <table className="fin-table w-full text-right" dir="rtl">
+             <table className="fin-table w-full text-right" dir={isRtl ? "rtl" : "ltr"}>
                <thead>
                  <tr>
-                   <th>القطاع / البند</th>
-                   <th>الإيرادات المتوقعة (ج.م)</th>
-                   <th>الملاحظات</th>
+                   <th>{curr.fin_table_col1}</th>
+                   <th>{curr.fin_table_col2}</th>
+                   <th>{curr.fin_table_col3}</th>
                  </tr>
                </thead>
                <tbody>
                  <tr>
-                   <td>أرباح مبيعات مستلزمات الإنتاج</td>
+                   <td>{curr.fin_row1_col1}</td>
                    <td className="font-mono text-emerald-400">4,760,000</td>
-                   <td className="text-slate-400">كاش وآجل (هامش مرجح 17%)</td>
+                   <td className="text-slate-400">{curr.fin_row1_col3}</td>
                  </tr>
                  <tr>
-                   <td>هامش ربح المتاجرة في المحاصيل</td>
+                   <td>{curr.fin_row2_col1}</td>
                    <td className="font-mono text-emerald-400">3,285,000</td>
-                   <td className="text-slate-400">ذرة، فول صويا، محاصيل حقلية</td>
+                   <td className="text-slate-400">{curr.fin_row2_col3}</td>
                  </tr>
                  <tr>
-                   <td>القطاع الصناعي (إنتاج السماد - كمبوست)</td>
+                   <td>{curr.fin_row3_col1}</td>
                    <td className="font-mono text-emerald-400">987,660</td>
-                   <td className="text-slate-400">تحويل 1770 طن مخلفات إلى 1062 طن سماد</td>
+                   <td className="text-slate-400">{curr.fin_row3_col3}</td>
                  </tr>
                  <tr className="total-row text-lg">
-                   <td className="text-gold-light">إجمالي الربح التشغيلي قبل المصروفات</td>
-                   <td className="font-mono text-gold-light">9,032,660</td>
-                   <td className="text-slate-400 text-sm">يخصم منها 1.2M للمصروفات، و 1.7M لخدمة الدين</td>
+                   <td className="text-gold-light font-bold">{curr.fin_total_col1}</td>
+                   <td className="font-mono text-gold-light font-bold">9,032,660</td>
+                   <td className="text-slate-400 text-sm">{curr.fin_total_col3}</td>
                  </tr>
                </tbody>
              </table>
@@ -609,8 +644,8 @@ export default function App() {
                      <MapPin className="w-6 h-6" />
                   </div>
                   <div>
-                    <h5 className="font-bold text-white mb-2 text-lg">المقر الرئيسي ومواقع العمل</h5>
-                    <p className="text-sm text-emerald-100/60 leading-relaxed">العياط، محافظة الجيزة<br/>جمهورية مصر العربية<br/><br/>مواقع المشاريع تغطي 350+ فدان تحت إشراف هندسي وزراعي مستمر.</p>
+                    <h5 className="font-bold text-white mb-2 text-lg">{curr.address_title}</h5>
+                    <p className="text-sm text-emerald-100/60 leading-relaxed">{curr.address_line1}<br/>{curr.address_line2}<br/><br/>{curr.address_desc}</p>
                   </div>
                </div>
             </div>
