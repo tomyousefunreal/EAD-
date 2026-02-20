@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/plantvillage-VISION/', // Required for GitHub Pages deployment
+  base: './', // Use relative paths for assets to work correctly regardless of GitHub repo name
   server: {
     port: 3000,
     open: true
